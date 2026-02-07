@@ -1066,6 +1066,8 @@
 </div>
 
 <script>
+const API_BASE = 'https://svfc-ckfb-bp-backend.onrender.com';
+const apiUrl = (path) => `${API_BASE}${path}`;
 let chartInstances = {};
 let reportData = {
   items: [],
@@ -1082,7 +1084,7 @@ let allBillsData = [];
 
 async function loadAnalytics() {
   try {
-    const response = await fetch('/api/bills?includeDeleted=true');
+    const response = await fetch(apiUrl('/api/bills?includeDeleted=true'));
     
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -1765,7 +1767,7 @@ function switchActionMode(mode) {
     billSelector.disabled = true;
     confirmBtn.disabled = true;
     
-    fetch('/api/bills?includeDeleted=true')
+    fetch(apiUrl('/api/bills?includeDeleted=true'))
       .then(res => res.json())
       .then(bills => {
         const hiddenBills = bills.filter(bill => bill.deleted === true || bill.deleted);
@@ -1807,7 +1809,7 @@ function switchActionMode(mode) {
     billSelector.disabled = true;
     confirmBtn.disabled = true;
     
-    fetch('/api/bills?includeDeleted=true')
+    fetch(apiUrl('/api/bills?includeDeleted=true'))
       .then(res => res.json())
       .then(allBills => {
         billSelector.innerHTML = '<option value="">-- Select a bill --</option>';
@@ -2124,7 +2126,7 @@ function downloadAnalyticsWithRange() {
 async function hideBill(billToken) {
   try {
     const token = localStorage.getItem('authToken') || localStorage.getItem('token');
-    const response = await fetch(`/api/bill/${billToken}/delete`, {
+    const response = await fetch(apiUrl(`/api/bill/${billToken}/delete`), {
       method: 'PUT',
       headers: { 
         'Content-Type': 'application/json',
@@ -2146,7 +2148,7 @@ async function hideBill(billToken) {
 async function unhideBill(billToken) {
   try {
     const token = localStorage.getItem('authToken') || localStorage.getItem('token');
-    const response = await fetch(`/api/bill/${billToken}/restore`, {
+    const response = await fetch(apiUrl(`/api/bill/${billToken}/restore`), {
       method: 'PUT',
       headers: { 
         'Content-Type': 'application/json',
@@ -2184,7 +2186,7 @@ async function confirmPermanentDelete() {
   
   try {
     const token = localStorage.getItem('authToken') || localStorage.getItem('token');
-    const response = await fetch(`/api/bill/${pendingPermanentDeleteToken}/permanent-delete`, {
+    const response = await fetch(apiUrl(`/api/bill/${pendingPermanentDeleteToken}/permanent-delete`), {
       method: 'DELETE',
       headers: { 
         'Content-Type': 'application/json',
