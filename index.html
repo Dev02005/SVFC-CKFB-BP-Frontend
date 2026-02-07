@@ -1601,6 +1601,8 @@ Bill No: <span id="billNoDisplay" class="bill-no-display" aria-hidden="false">0<
 </div>
 
 <script>
+const API_BASE = 'https://svfc-ckfb-bp-backend.onrender.com';
+const apiUrl = (path) => `${API_BASE}${path}`;
 
 // ===== AUTHENTICATION CHECK =====
 function checkAuthentication() {
@@ -1760,7 +1762,7 @@ let isLoadingBillNo = false;
 /* FETCH NEXT BILL NUMBER FROM SERVER */
 async function fetchNextBillNumber() {
   try {
-    const response = await fetch('/api/token');
+    const response = await fetch(apiUrl('/api/token'));
     const data = await response.json();
     if (data.success) {
       billNumber = data.token;
@@ -1777,7 +1779,7 @@ async function fetchNextBillNumber() {
 async function loadNumbers(){
   // Fetch current bill number from server
   try {
-    const response = await fetch('/api/token/current');
+    const response = await fetch(apiUrl('/api/token/current'));
     const data = await response.json();
     if(data.success){
       billNumber = data.token;
@@ -2008,7 +2010,7 @@ token: billNumber
 };
 
 // Save bill to database
-fetch('/api/bill', {
+fetch(apiUrl('/api/bill'), {
 method: 'POST',
 headers: {
 'Content-Type': 'application/json'
@@ -2150,7 +2152,7 @@ return;
 
 try {
 const token = localStorage.getItem('authToken') || localStorage.getItem('token');
-const response = await fetch('/api/custom-items', {
+const response = await fetch(apiUrl('/api/custom-items'), {
 method: 'POST',
 headers: {
 'Content-Type': 'application/json',
@@ -2183,7 +2185,7 @@ alert('❌ Failed to add item to menu');
 async function loadCustomMenuItems(){
 try {
 const token = localStorage.getItem('authToken') || localStorage.getItem('token');
-const response = await fetch('/api/custom-items', {
+const response = await fetch(apiUrl('/api/custom-items'), {
 headers: {
 'Authorization': `Bearer ${token}`
 }
