@@ -328,6 +328,8 @@
   </div>
 
   <script>
+    const API_BASE = 'https://svfc-ckfb-bp-backend.onrender.com';
+    const apiUrl = (path) => `${API_BASE}${path}`;
     const loginForm = document.getElementById('loginForm');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
@@ -378,7 +380,7 @@
       spinner.classList.add('show');
 
       try {
-        const response = await fetch('/api/auth/login', {
+        const response = await fetch(apiUrl('/api/auth/login'), {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
