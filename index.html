@@ -1782,8 +1782,8 @@ Bill No: <span id="billNoDisplay" class="bill-no-display" aria-hidden="false">0<
 </div>
 
 <script>
-// Use relative URLs - Flask will handle the routing
-const apiUrl = (path) => path;
+// Connect to Render backend
+const apiUrl = (path) => 'https://svfc-ckfb-bp-backend.onrender.com' + path;
 
 // ===== AUTHENTICATION CHECK =====
 function checkAuthentication() {
