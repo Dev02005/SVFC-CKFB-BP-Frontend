@@ -330,8 +330,8 @@
   </div>
 
   <script>
-    // Use relative URLs - Flask will handle the routing
-    const apiUrl = (path) => path;
+    // Connect to Render backend
+    const apiUrl = (path) => 'https://svfc-ckfb-bp-backend.onrender.com' + path;
     const loginForm = document.getElementById('loginForm');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
