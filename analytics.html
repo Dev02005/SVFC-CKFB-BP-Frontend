@@ -1290,6 +1290,19 @@ let allBillsData = [];
 let currentBillPage = 1;
 let billsPerPage = 50;
 
+function parseBillDate(bill) {
+  const rawDate = bill.createdAtISO || bill.createdAt || bill.date || null;
+  if (!rawDate) return null;
+  if (typeof rawDate === 'string') {
+    const hasTimezone = /[zZ]|[+-]\d{2}:?\d{2}$/.test(rawDate);
+    const normalized = hasTimezone ? rawDate : `${rawDate}Z`;
+    const parsed = new Date(normalized);
+    return isNaN(parsed.getTime()) ? null : parsed;
+  }
+  const parsed = new Date(rawDate);
+  return isNaN(parsed.getTime()) ? null : parsed;
+}
+
 async function loadAnalytics() {
   try {
     const response = await fetch(apiUrl('/api/bills?includeDeleted=true'));
@@ -1340,19 +1353,22 @@ async function loadAnalytics() {
     let filterBills = activeBills;
     if (dateMode === 'today') {
       filterBills = filterBills.filter(bill => {
-        const billDate = new Date(bill.createdAt);
+        const billDate = parseBillDate(bill);
+        if (!billDate) return false;
         billDate.setHours(0, 0, 0, 0);
         return billDate.getTime() === today.getTime();
       });
     } else if (dateMode === 'week') {
       filterBills = filterBills.filter(bill => {
-        const billDate = new Date(bill.createdAt);
+        const billDate = parseBillDate(bill);
+        if (!billDate) return false;
         billDate.setHours(0, 0, 0, 0);
         return billDate.getTime() >= weekStart.getTime();
       });
     } else if (dateMode === 'month') {
       filterBills = filterBills.filter(bill => {
-        const billDate = new Date(bill.createdAt);
+        const billDate = parseBillDate(bill);
+        if (!billDate) return false;
         billDate.setHours(0, 0, 0, 0);
         return billDate.getTime() >= monthStart.getTime();
       });
@@ -1360,7 +1376,8 @@ async function loadAnalytics() {
       const customDate = new Date(selectedDate);
       customDate.setHours(0, 0, 0, 0);
       filterBills = filterBills.filter(bill => {
-        const billDate = new Date(bill.createdAt);
+        const billDate = parseBillDate(bill);
+        if (!billDate) return false;
         billDate.setHours(0, 0, 0, 0);
         return billDate.getTime() === customDate.getTime();
       });
@@ -1368,11 +1385,8 @@ async function loadAnalytics() {
       const rangeFrom = new Date(rangeFromDate);
       const rangeTo = new Date(rangeToDate);
       filterBills = filterBills.filter(bill => {
-        const rawDate = bill.createdAt || bill.createdAtISO || null;
-        const billDate = rawDate ? new Date(rawDate) : null;
-        if (!billDate || isNaN(billDate.getTime())) {
-          return false;
-        }
+        const billDate = parseBillDate(bill);
+        if (!billDate) return false;
         return billDate >= rangeFrom && billDate <= rangeTo;
       });
     }
@@ -1380,13 +1394,15 @@ async function loadAnalytics() {
     const todayBills = filterBills;
 
     const weekBills = activeBills.filter(bill => {
-      const billDate = new Date(bill.createdAt);
+      const billDate = parseBillDate(bill);
+      if (!billDate) return false;
       billDate.setHours(0, 0, 0, 0);
       return billDate.getTime() >= weekStart.getTime();
     });
 
     const monthBills = activeBills.filter(bill => {
-      const billDate = new Date(bill.createdAt);
+      const billDate = parseBillDate(bill);
+      if (!billDate) return false;
       billDate.setHours(0, 0, 0, 0);
       return billDate.getTime() >= monthStart.getTime();
     });
@@ -1412,7 +1428,9 @@ async function loadAnalytics() {
     // Calculate peak hour
     const hourCounts = {};
     todayBills.forEach(bill => {
-      const hour = new Date(bill.createdAt).getHours();
+      const billDate = parseBillDate(bill);
+      if (!billDate) return;
+      const hour = billDate.getHours();
       hourCounts[hour] = (hourCounts[hour] || 0) + 1;
     });
     const peakHour = Object.entries(hourCounts).reduce((a, b) => a[1] > b[1] ? a : b, [0, 0])[0];
@@ -1473,9 +1491,8 @@ async function loadAnalytics() {
 
     // Build bills report data
     reportData.bills = todayBills.map((bill, index) => {
-      // Parse the ISO datetime string properly
+      const billDate = parseBillDate(bill);
       const dateStr = bill.createdAtISO || bill.createdAt;
-      const billDate = new Date(dateStr);
       const formattedDate = billDate.toLocaleString('en-IN', { 
         year: 'numeric', 
         month: '2-digit', 
