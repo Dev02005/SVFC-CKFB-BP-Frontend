@@ -67,6 +67,8 @@
       margin: 0 auto;
       display: flex;
       justify-content: center;
+      flex: 1;
+      align-items: center;
     }
 
     .login-box {
@@ -328,8 +330,8 @@
   </div>
 
   <script>
-    const API_BASE = 'https://svfc-ckfb-bp-backend.onrender.com';
-    const apiUrl = (path) => `${API_BASE}${path}`;
+    // Use relative URLs - Flask will handle the routing
+    const apiUrl = (path) => path;
     const loginForm = document.getElementById('loginForm');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
@@ -398,7 +400,7 @@
           localStorage.setItem('authToken', data.token);
           localStorage.setItem('token', data.token);
           localStorage.setItem('user', JSON.stringify(data.user));
-          window.location.replace('/index.html');
+          window.location.replace('/');
         } else {
           showError(data.error || 'Login failed');
           loginBtn.disabled = false;
