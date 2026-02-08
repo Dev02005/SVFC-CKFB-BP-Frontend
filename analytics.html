@@ -979,8 +979,12 @@
     }
 
     @media (max-width: 768px) {
+      body {
+        zoom: 1;
+      }
+
       .analytics-container {
-        padding: 15px;
+        padding: 10px;
       }
 
       .stats-grid {
@@ -995,6 +999,7 @@
         flex-direction: column;
         gap: 15px;
         text-align: center;
+        padding-bottom: 12px;
       }
 
       .analytics-header h1 {
@@ -1002,21 +1007,86 @@
       }
 
       .back-btn {
-        top: 32px;
-        right: 12px;
-        padding: 8px 13px;
-        min-width: 80px;
+        position: static;
+        margin: 6px auto 0;
+        padding: 8px 14px;
+        min-width: 120px;
         font-size: 12px;
+      }
+
+      .date-controls,
+      .range-controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .date-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .calendar-picker-wrapper {
+        width: 100%;
+      }
+
+      .custom-date-input {
+        min-width: 0;
+        width: 100%;
+      }
+
+      .date-display {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+      }
+
+      .report-section {
+        padding: 16px;
+        overflow-x: auto;
+      }
+
+      .report-section h3 {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .report-table {
+        min-width: 680px;
+      }
+
+      .action-buttons-grid {
+        grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 480px) {
+      body {
+        zoom: 1;
+      }
+
       .back-btn {
-        top: 28px;
-        right: 8px;
-        padding: 6px 10px;
-        min-width: 65px;
-        font-size: 11px;
+        width: 100%;
+        max-width: 220px;
+        padding: 10px 14px;
+        min-height: 44px;
+        font-size: 12px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .chart-container {
+        padding: 14px;
+      }
+
+      .chart-title {
+        font-size: 16px;
+      }
+
+      .report-table {
+        font-size: 13px;
       }
     }
   </style>
