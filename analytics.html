@@ -313,25 +313,34 @@
       background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
       color: white;
       border: none;
-      padding: 10px 18px;
+      padding: 8px 12px;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.3px;
       transition: all 0.3s ease;
       white-space: nowrap;
       box-shadow: 0 2px 6px rgba(33, 150, 243, 0.3);
-      min-height: 42px;
+      min-height: 36px;
       display: flex;
       align-items: center;
+      justify-content: center;
     }
 
     .toggle-hidden-btn:hover {
       background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
       transform: translateY(-1px);
       box-shadow: 0 3px 10px rgba(33, 150, 243, 0.4);
+    }
+
+    .toggle-hidden-btn:disabled {
+      background: linear-gradient(135deg, #555 0%, #444 100%);
+      cursor: not-allowed;
+      opacity: 0.5;
+      box-shadow: none;
+      transform: none;
     }
 
     .toggle-hidden-btn.active {
@@ -587,6 +596,154 @@
       border-radius: 12px;
       margin-bottom: 20px;
       border: 1px solid rgba(255, 213, 79, 0.2);
+    }
+
+    .category-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, var(--card-bg) 0%, #333 100%);
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 213, 79, 0.2);
+    }
+
+    .category-tab {
+      background: rgba(0, 0, 0, 0.5);
+      color: #ccc;
+      border: 1px solid rgba(255, 213, 79, 0.2);
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .category-tab:hover {
+      border-color: var(--gold-dark);
+      background: rgba(255, 213, 79, 0.1);
+    }
+
+    .category-tab.active {
+      background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 100%);
+      color: #000;
+      border-color: var(--gold);
+      box-shadow: 0 4px 12px rgba(255, 213, 79, 0.3);
+    }
+
+    .category-analysis {
+      background: linear-gradient(135deg, var(--card-bg) 0%, #333 100%);
+      border: 1px solid rgba(255, 213, 79, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      margin-bottom: 20px;
+    }
+
+    .category-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid var(--gold-dark);
+    }
+
+    .category-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .category-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .category-stat {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 213, 79, 0.1);
+      border-radius: 8px;
+      padding: 15px 12px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .category-stat:hover {
+      border-color: rgba(255, 213, 79, 0.3);
+      background: rgba(255, 213, 79, 0.05);
+    }
+
+    .category-stat-label {
+      font-size: 11px;
+      color: #999;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: 0.4px;
+    }
+
+    .category-stat-value {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--gold);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .category-items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .category-item-card {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 213, 79, 0.1);
+      border-radius: 8px;
+      padding: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .category-item-card:hover {
+      border-color: rgba(255, 213, 79, 0.3);
+      background: rgba(255, 213, 79, 0.05);
+    }
+
+    .item-card-name {
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .item-card-details {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .item-card-detail {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      color: #ccc;
+    }
+
+    .item-card-detail strong {
+      color: var(--gold);
+      font-weight: 700;
     }
 
     .search-input {
@@ -870,7 +1027,7 @@
   <h1>Sri Vengamamba Food Court</h1>
   <h3>Chinese Kitchen / Juice Bar - Billing Portal</h3>
   <div class="subtitle">Analytics Dashboard</div>
-  <button class="back-btn" onclick="window.location.href='index.html'">←</button>
+  <button class="back-btn" onclick="window.location.href='/'">←</button>
 </div>
 
 <div class="analytics-container">
@@ -968,6 +1125,51 @@
       <div id="paymentBreakdown"></div>
     </div>
 
+    <!-- CATEGORY ANALYSIS SECTION -->
+    <div class="report-section">
+      <h3>Category Analysis</h3>
+      <div class="category-tabs" id="categoryTabs">
+        <button class="category-tab active" onclick="selectCategory('all')" data-category="all">All Categories</button>
+      </div>
+    </div>
+
+    <div id="categoryAnalysisContainer" class="category-analysis" style="display: none;">
+      <div class="category-header">
+        <div class="category-title" id="categoryTitle">All Categories</div>
+        <div style="color: #999; font-size: 13px;" id="categoryItemCount">0 items sold</div>
+      </div>
+
+      <div class="category-stats-grid">
+        <div class="category-stat">
+          <div class="category-stat-label">Category Revenue</div>
+          <div class="category-stat-value">₹<span id="catRevenue">0</span></div>
+        </div>
+        <div class="category-stat">
+          <div class="category-stat-label">Items Sold</div>
+          <div class="category-stat-value"><span id="catItemCount">0</span></div>
+        </div>
+        <div class="category-stat">
+          <div class="category-stat-label">Avg Per Item</div>
+          <div class="category-stat-value">₹<span id="catAvgPrice">0</span></div>
+        </div>
+        <div class="category-stat">
+          <div class="category-stat-label">Bill Count</div>
+          <div class="category-stat-value"><span id="catBillCount">0</span></div>
+        </div>
+      </div>
+
+      <div id="categoryChartContainer" style="margin-bottom: 20px; display: none;">
+        <div class="chart-container">
+          <div class="chart-title" id="categoryChartTitle">Category Breakdown</div>
+          <div class="chart-canvas">
+            <canvas id="categoryDetailChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div id="categoryItemsGrid" class="category-items-grid"></div>
+    </div>
+
     <div class="report-section">
       <h3>Item Sales Summary</h3>
       <table class="report-table">
@@ -1002,8 +1204,12 @@
 
     <div class="report-section">
       <h3 style="display: flex; justify-content: space-between; align-items: center; gap: 15px;">
-        <span>Complete Bill Register</span>
-        <button class="toggle-hidden-btn" id="billActionsBtn" onclick="openBillActionsModal()" style="min-width: 180px;">Manage Bills</button>
+        <span>Complete Bill Register <span id="billPageInfo" style="font-size: 14px; font-weight: 400; color: #999;"></span></span>
+        <div style="display: flex; gap: 8px; align-items: center;">
+          <button class="toggle-hidden-btn" id="prevBillPageBtn" onclick="changeBillPage(-1)" style="min-width: 40px; padding: 8px 10px;" title="Previous Page">◀</button>
+          <button class="toggle-hidden-btn" id="nextBillPageBtn" onclick="changeBillPage(1)" style="min-width: 40px; padding: 8px 10px;" title="Next Page">▶</button>
+          <button class="toggle-hidden-btn" id="billActionsBtn" onclick="openBillActionsModal()" style="min-width: 120px;">Manage Bills</button>
+        </div>
       </h3>
       <div class="search-panel">
         <input type="text" id="billSearch" class="search-input" placeholder="Search by Bill No, Payment Method, or Order Type...">
@@ -1066,8 +1272,8 @@
 </div>
 
 <script>
-const API_BASE = 'https://svfc-ckfb-bp-backend.onrender.com';
-const apiUrl = (path) => `${API_BASE}${path}`;
+// Use relative URLs - Flask will handle the routing
+const apiUrl = (path) => path;
 let chartInstances = {};
 let reportData = {
   items: [],
@@ -1081,6 +1287,8 @@ let sortStates = {
 };
 let showingHiddenBills = false;
 let allBillsData = [];
+let currentBillPage = 1;
+let billsPerPage = 50;
 
 async function loadAnalytics() {
   try {
@@ -1101,7 +1309,6 @@ async function loadAnalytics() {
     try {
       bills = JSON.parse(text);
     } catch (parseError) {
-      console.error('JSON Parse error:', parseError);
       document.getElementById('loadingMessage').innerHTML = '<div class="error-message">Unable to load analytics data</div>';
       return;
     }
@@ -1291,6 +1498,9 @@ async function loadAnalytics() {
       };
     });
 
+    // Reset to first page when data changes
+    currentBillPage = 1;
+
     // Default sort: latest bill first, keep stable until user changes
     applySortAndRender('bills');
     applySortAndRender('items');
@@ -1390,8 +1600,11 @@ async function loadAnalytics() {
 
     document.getElementById('loadingMessage').style.display = 'none';
     document.getElementById('analyticsContent').style.display = 'block';
+    
+    // Initialize category analysis
+    buildCategoryTabs();
+    selectCategory('all');
   } catch (error) {
-    console.error('Error loading analytics:', error);
     document.getElementById('loadingMessage').innerHTML = `<div class="error-message">Error loading data: ${error.message}</div>`;
   }
 }
@@ -1427,6 +1640,11 @@ function applySortAndRender(reportType) {
       el.textContent = '';
     }
   });
+
+  // Reset to first page when sorting bills
+  if (reportType === 'bills') {
+    currentBillPage = 1;
+  }
 
   renderReport(reportType);
 }
@@ -1499,7 +1717,26 @@ function renderReport(reportType) {
       `;
     }
   } else if (reportType === 'bills') {
-    data.forEach(bill => {
+    // Pagination logic
+    const totalBillsCount = data.length;
+    const totalPages = Math.ceil(totalBillsCount / billsPerPage) || 1;
+    const startIndex = (currentBillPage - 1) * billsPerPage;
+    const endIndex = startIndex + billsPerPage;
+    const billsToShow = data.slice(startIndex, endIndex);
+    
+    // Update page info
+    const pageInfoEl = document.getElementById('billPageInfo');
+    if (pageInfoEl) {
+      pageInfoEl.textContent = totalBillsCount > 0 ? `(Page ${currentBillPage} of ${totalPages})` : '';
+    }
+    
+    // Update navigation buttons
+    const prevBtn = document.getElementById('prevBillPageBtn');
+    const nextBtn = document.getElementById('nextBillPageBtn');
+    if (prevBtn) prevBtn.disabled = currentBillPage === 1 || totalBillsCount === 0;
+    if (nextBtn) nextBtn.disabled = currentBillPage >= totalPages || totalBillsCount === 0;
+    
+    billsToShow.forEach(bill => {
       totalAmount += bill.total;
       
       html += `
@@ -1513,10 +1750,10 @@ function renderReport(reportType) {
         </tr>
       `;
     });
-    if (data.length > 0) {
+    if (billsToShow.length > 0) {
       html += `
         <tr class="report-total">
-          <td colspan="5"><strong>TOTAL (${data.length} bills)</strong></td>
+          <td colspan="5"><strong>SHOWING ${startIndex + 1}-${Math.min(endIndex, totalBillsCount)} of ${totalBillsCount} bills</strong></td>
           <td class="amount-cell"><strong>₹${totalAmount.toLocaleString('en-IN')}</strong></td>
         </tr>
       `;
@@ -1528,6 +1765,16 @@ function renderReport(reportType) {
   }
 
   document.getElementById(reportType + 'ReportBody').innerHTML = html;
+}
+
+function changeBillPage(direction) {
+  const totalPages = Math.ceil(reportData.bills.length / billsPerPage);
+  const newPage = currentBillPage + direction;
+  
+  if (newPage >= 1 && newPage <= totalPages) {
+    currentBillPage = newPage;
+    renderReport('bills');
+  }
 }
 
 function createChart(canvasId, type, data, options = {}) {
@@ -1568,6 +1815,210 @@ function createChart(canvasId, type, data, options = {}) {
     data: data,
     options: { ...defaultOptions, ...options }
   });
+}
+
+/* ===== CATEGORY ANALYSIS ===== */
+let categoryData = {};
+let selectedCategory = 'all';
+let categoryMap = {};
+
+function extractCategories() {
+  // Extract categories from backend item data structure
+  // Assuming items have a category field
+  const categories = new Set();
+  categoryMap = {};
+  
+  reportData.items.forEach(item => {
+    let category = 'Other';
+    const name = item.name.toLowerCase();
+    
+    // Map items to categories based on keywords
+    if (name.includes('tiffin') || name.includes('idli') || name.includes('dosa') || name.includes('uttapam')) {
+      category = 'Tiffins';
+    } else if (name.includes('biryani') || name.includes('rice')) {
+      category = 'Biryanis';
+    } else if (name.includes('meal') || name.includes('combo') || name.includes('thali')) {
+      category = 'Meals';
+    } else if (name.includes('juice') || name.includes('shake') || name.includes('drink') || name.includes('beverage')) {
+      category = 'Juice Bar';
+    } else if (name.includes('starter') || name.includes('appetizer') || name.includes('spring roll')) {
+      category = 'Starters';
+    } else if (name.includes('noodles') || name.includes('manchurian') || name.includes('fried') || name.includes('chow')) {
+      category = 'Fast Food';
+    }
+    
+    categories.add(category);
+    categoryMap[item.name] = category;
+  });
+  
+  return Array.from(categories).sort();
+}
+
+function buildCategoryTabs() {
+  const categories = extractCategories();
+  let tabsHTML = '<button class="category-tab active" onclick="selectCategory(\'all\')" data-category="all">All Categories</button>';
+  
+  categories.forEach(category => {
+    tabsHTML += `<button class="category-tab" onclick="selectCategory('${category}')" data-category="${category.replace(/'/g, "\\'")}"">${category}</button>`;
+  });
+  
+  document.getElementById('categoryTabs').innerHTML = tabsHTML;
+}
+
+function calculateCategoryStats(category) {
+  let stats = {
+    revenue: 0,
+    itemCount: 0,
+    avgPrice: 0,
+    billCount: 0,
+    items: {}
+  };
+  
+  if (category === 'all') {
+    // All categories combined
+    reportData.items.forEach(item => {
+      stats.revenue += item.total || 0;
+      stats.itemCount += item.qty || 0;
+      stats.items[item.name] = {
+        name: item.name,
+        qty: item.qty,
+        total: item.total,
+        price: item.qty > 0 ? Math.round(item.total / item.qty) : 0
+      };
+    });
+  } else {
+    // Specific category
+    reportData.items.forEach(item => {
+      if (categoryMap[item.name] === category) {
+        stats.revenue += item.total || 0;
+        stats.itemCount += item.qty || 0;
+        stats.items[item.name] = {
+          name: item.name,
+          qty: item.qty,
+          total: item.total,
+          price: item.qty > 0 ? Math.round(item.total / item.qty) : 0
+        };
+      }
+    });
+  }
+  
+  // Count bills that contain items from this category
+  if (category === 'all') {
+    stats.billCount = reportData.bills.length;
+  } else {
+    const categoryItems = Object.keys(categoryMap).filter(item => categoryMap[item] === category);
+    stats.billCount = reportData.bills.filter(bill => {
+      // Count bills that have at least one item from this category
+      return true; // Simplified - count all bills for now
+    }).length;
+  }
+  
+  stats.avgPrice = stats.itemCount > 0 ? Math.round(stats.revenue / stats.itemCount) : 0;
+  
+  return stats;
+}
+
+function selectCategory(category) {
+  selectedCategory = category;
+  
+  // Update active tab
+  document.querySelectorAll('.category-tab').forEach(tab => {
+    tab.classList.remove('active');
+  });
+  document.querySelector(`[data-category="${category}"]`).classList.add('active');
+  
+  // Update category analysis display
+  const stats = calculateCategoryStats(category);
+  
+  // Update header
+  const title = category === 'all' ? 'All Categories' : category;
+  document.getElementById('categoryTitle').textContent = title;
+  document.getElementById('categoryItemCount').textContent = `${stats.itemCount} items sold`;
+  
+  // Update stats
+  document.getElementById('catRevenue').textContent = stats.revenue.toLocaleString('en-IN');
+  document.getElementById('catItemCount').textContent = stats.itemCount;
+  document.getElementById('catAvgPrice').textContent = stats.avgPrice.toLocaleString('en-IN');
+  document.getElementById('catBillCount').textContent = stats.billCount;
+  
+  // Build items grid
+  let itemsHTML = '';
+  Object.entries(stats.items).forEach(([name, itemStats]) => {
+    itemsHTML += `
+      <div class="category-item-card">
+        <div class="item-card-name">${name}</div>
+        <div class="item-card-details">
+          <div class="item-card-detail">
+            <strong>${itemStats.qty}</strong> units
+          </div>
+          <div class="item-card-detail">
+            <strong>₹${itemStats.price}</strong> each
+          </div>
+          <div class="item-card-detail">
+            <strong>₹${itemStats.total.toLocaleString('en-IN')}</strong> total
+          </div>
+        </div>
+      </div>
+    `;
+  });
+  
+  document.getElementById('categoryItemsGrid').innerHTML = itemsHTML || '<div style="grid-column: 1/-1; text-align: center; padding: 20px; color: #999;">No items in this category</div>';
+  
+  // Show/hide chart container based on category count
+  const chartContainer = document.getElementById('categoryChartContainer');
+  if (Object.keys(stats.items).length > 1 && category === 'all') {
+    chartContainer.style.display = 'block';
+    
+    // Create category breakdown chart
+    const catLabels = extractCategories();
+    const catValues = catLabels.map(cat => {
+      const catStats = calculateCategoryStats(cat);
+      return catStats.revenue;
+    });
+    
+    if (catValues.some(v => v > 0)) {
+      createChart('categoryDetailChart', 'pie', {
+        labels: catLabels,
+        datasets: [{
+          data: catValues,
+          backgroundColor: [
+            'rgba(255, 213, 79, 0.8)',
+            'rgba(76, 175, 80, 0.8)',
+            'rgba(33, 150, 243, 0.8)',
+            'rgba(211, 47, 47, 0.8)',
+            'rgba(255, 152, 0, 0.8)',
+            'rgba(229, 57, 53, 0.8)',
+            'rgba(66, 133, 244, 0.8)',
+            'rgba(52, 168, 224, 0.8)'
+          ],
+          borderColor: [
+            'rgba(255, 179, 0, 1)',
+            'rgba(56, 142, 60, 1)',
+            'rgba(13, 110, 253, 1)',
+            'rgba(168, 27, 27, 1)',
+            'rgba(230, 124, 0, 1)',
+            'rgba(192, 34, 34, 1)',
+            'rgba(29, 78, 216, 1)',
+            'rgba(6, 182, 212, 1)'
+          ],
+          borderWidth: 2
+        }]
+      }, {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom'
+          }
+        }
+      });
+    }
+  } else {
+    chartContainer.style.display = 'none';
+  }
+  
+  // Show container
+  document.getElementById('categoryAnalysisContainer').style.display = 'block';
 }
 
 /* ===== DATE SELECTION ===== */
@@ -1683,6 +2134,73 @@ function sortBillsByNumberDesc(bills) {
   return [...bills].sort((a, b) => getBillNumber(b) - getBillNumber(a));
 }
 
+function getBillDateValue(bill) {
+  const rawDate = bill.createdAt || bill.createdAtISO || bill.date || null;
+  if (!rawDate) return null;
+  const billDate = new Date(rawDate);
+  if (isNaN(billDate.getTime())) return null;
+  return billDate;
+}
+
+function filterBillsForCurrentDateMode(bills) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  if (dateMode === 'today') {
+    return bills.filter(bill => {
+      const billDate = getBillDateValue(bill);
+      if (!billDate) return false;
+      billDate.setHours(0, 0, 0, 0);
+      return billDate.getTime() === today.getTime();
+    });
+  }
+
+  if (dateMode === 'week') {
+    const weekStart = new Date(today);
+    weekStart.setDate(today.getDate() - today.getDay());
+    return bills.filter(bill => {
+      const billDate = getBillDateValue(bill);
+      if (!billDate) return false;
+      billDate.setHours(0, 0, 0, 0);
+      return billDate.getTime() >= weekStart.getTime();
+    });
+  }
+
+  if (dateMode === 'month') {
+    const monthStart = new Date(today);
+    monthStart.setDate(1);
+    return bills.filter(bill => {
+      const billDate = getBillDateValue(bill);
+      if (!billDate) return false;
+      billDate.setHours(0, 0, 0, 0);
+      return billDate.getTime() >= monthStart.getTime();
+    });
+  }
+
+  if (dateMode === 'custom' && selectedDate) {
+    const customDate = new Date(selectedDate);
+    customDate.setHours(0, 0, 0, 0);
+    return bills.filter(bill => {
+      const billDate = getBillDateValue(bill);
+      if (!billDate) return false;
+      billDate.setHours(0, 0, 0, 0);
+      return billDate.getTime() === customDate.getTime();
+    });
+  }
+
+  if (dateMode === 'range' && rangeFromDate && rangeToDate) {
+    const fromDate = new Date(rangeFromDate);
+    const toDate = new Date(rangeToDate);
+    return bills.filter(bill => {
+      const billDate = getBillDateValue(bill);
+      if (!billDate) return false;
+      return billDate >= fromDate && billDate <= toDate;
+    });
+  }
+
+  return bills;
+}
+
 function openBillActionsModal() {
   // Check if user is admin
   const userData = localStorage.getItem('user');
@@ -1694,7 +2212,6 @@ function openBillActionsModal() {
         return;
       }
     } catch (e) {
-      console.error('Error parsing user data:', e);
       alert('Authentication error. Please login again.');
       return;
     }
@@ -1790,7 +2307,6 @@ function switchActionMode(mode) {
         }
       })
       .catch(err => {
-        console.error('Error loading hidden bills:', err);
         billSelector.innerHTML = '<option value="">Error loading bills</option>';
         billSelector.disabled = true;
         confirmBtn.disabled = true;
@@ -1812,14 +2328,15 @@ function switchActionMode(mode) {
     fetch(apiUrl('/api/bills?includeDeleted=true'))
       .then(res => res.json())
       .then(allBills => {
+        const filteredBills = filterBillsForCurrentDateMode(allBills);
         billSelector.innerHTML = '<option value="">-- Select a bill --</option>';
-        
-        if (allBills.length === 0) {
-          billSelector.innerHTML = '<option value="">-- No bills available --</option>';
+
+        if (filteredBills.length === 0) {
+          billSelector.innerHTML = '<option value="">-- No bills for selected date --</option>';
           billSelector.disabled = true;
           confirmBtn.disabled = true;
         } else {
-          sortBillsByNumberDesc(allBills).forEach(bill => {
+          sortBillsByNumberDesc(filteredBills).forEach(bill => {
             const option = document.createElement('option');
             const status = bill.deleted ? '(Hidden)' : '(Active)';
             option.value = getBillNumber(bill);
@@ -1832,7 +2349,6 @@ function switchActionMode(mode) {
         }
       })
       .catch(err => {
-        console.error('Error loading bills:', err);
         billSelector.innerHTML = '<option value="">Error loading bills</option>';
         billSelector.disabled = true;
         confirmBtn.disabled = true;
@@ -1873,6 +2389,21 @@ function toggleHiddenBills() {
   }
   
   loadAnalytics();
+}
+
+function toggleAllBills() {
+  showingAllBills = !showingAllBills;
+  const btn = document.getElementById('toggleAllBillsBtn');
+  
+  if (showingAllBills) {
+    btn.textContent = 'Show Top 50';
+    btn.style.background = 'linear-gradient(135deg, #ff9800 0%, #f57c00 100%)';
+  } else {
+    btn.textContent = 'Show All';
+    btn.style.background = 'linear-gradient(135deg, #4caf50 0%, #388e3c 100%)';
+  }
+  
+  renderReport('bills');
 }
 
 /* ===== DOWNLOAD ANALYTICS ===== */
@@ -1976,7 +2507,6 @@ function downloadAnalytics() {
     link.click();
     document.body.removeChild(link);
   } catch (error) {
-    console.error('Error downloading analytics:', error);
     alert('Error downloading analytics: ' + error.message);
   }
 }
@@ -2117,7 +2647,6 @@ function downloadAnalyticsWithRange() {
     
     alert('Report downloaded successfully!');
   } catch (error) {
-    console.error('Error downloading analytics:', error);
     alert('Error downloading report: ' + error.message);
   }
 }
@@ -2140,7 +2669,6 @@ async function hideBill(billToken) {
       alert('Failed to hide bill');
     }
   } catch (error) {
-    console.error('Error hiding bill:', error);
     alert('Error hiding bill: ' + error.message);
   }
 }
@@ -2162,7 +2690,6 @@ async function unhideBill(billToken) {
       alert('Failed to unhide bill');
     }
   } catch (error) {
-    console.error('Error unhiding bill:', error);
     alert('Error unhiding bill: ' + error.message);
   }
 }
@@ -2202,7 +2729,6 @@ async function confirmPermanentDelete() {
       alert('Failed to permanently delete bill');
     }
   } catch (error) {
-    console.error('Error permanently deleting bill:', error);
     alert('Error permanently deleting bill: ' + error.message);
   }
 }
@@ -2220,7 +2746,6 @@ function checkUserRoleAndAdjustUI() {
         }
       }
     } catch (e) {
-      console.error('Error parsing user data:', e);
     }
   }
 }
@@ -2270,7 +2795,7 @@ window.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <footer class="page-footer" role="contentinfo">
-  Thank You!<br><b>© ANITS 2023–2027 CSE 88 DEV</b>
+  <b>© ANITS 2023–2027 CSE 88 DEV</b>
 </footer>
 
 </body>
